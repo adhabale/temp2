@@ -1,0 +1,679 @@
+<div class="page-title">
+  <div class="title_left">
+    <h1>Sanctions Form for Insurance and Reinsurance Business</h1>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <label class="control-label">Policy Type</label>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-8">
+                <mat-button-toggle-group value="New Policy" aria-label="Change color" name="policyType" [(ngModel)]="policyType">
+                  <mat-button-toggle id="primary" value="New Policy"> New Policy </mat-button-toggle>
+                  <mat-button-toggle id="secondary" value="Renewal"> Renewal </mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="control-label">
+              <mat-checkbox [(ngModel)]="quote" color="primary">Quote</mat-checkbox>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="control-label">
+              <mat-checkbox [(ngModel)]="claim" color="primary">Claim</mat-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4" *ngIf="claim||policyType=='Renewal'" style="padding-top:10px;">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <label class="control-label">Policy number</label>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-8">
+                <mat-form-field class="example-form-field">
+                  <input matInput type="text" placeholder="Policy Number" [(ngModel)]="policyNumber">
+                  <button mat-button *ngIf="policyNumber" matSuffix mat-icon-button aria-label="Clear" (click)="policyNumber=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4" *ngIf="claim" style="padding-top:10px;">
+            <mat-form-field>
+              <input matInput [matDatepicker]="claimDatePicker" placeholder="Claim Date" [(ngModel)]="claimDate"
+                required>
+              <mat-datepicker-toggle matSuffix [for]="claimDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #claimDatePicker></mat-datepicker>
+            </mat-form-field>
+            <!-- <mat-error *ngIf="!claimDate">
+              Claim date <strong>required</strong>
+            </mat-error> -->
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4" *ngIf="claim">
+            <mat-form-field style="width:75%">
+              <mat-label>Claim Details</mat-label>
+              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <form id="standardSanctionForm">
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 1/13</span>What
+                  is the name of your legal entity, business area and the office location?<a tabindex="0" class="btn"
+                    role="button" data-toggle="popover" data-trigger="focus" title="Example:" data-content="CRB (GB) – Transportation (Marine) or HCB (GB) – London or IRR (Willis Re) – International
+                    APMETA">
+                    <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <table class="table">
+                    <tbody>
+                      <tr style="color:#702082;">
+                        <th style="width: 5%"></th>
+                        <th>Business Area</th>
+                        <th>Office location</th>
+                        <th>WTW Legal Entity</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <mat-icon>remove</mat-icon>
+                        </td>
+                        <td>
+                          Marine – GB</td>
+                        <td>London</td>
+                        <td>Willis Towers Watson Consulting </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <mat-icon color="primary">add_box</mat-icon>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 2/13</span>Date the policy will incept and the duration of the policy<a tabindex="1" class="btn"
+                    role="button" data-toggle="popover" data-trigger="focus" title="Example:" data-content="January 1 for 12 months">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <div class="col-sm-12 col-md-6 col-lg-6">
+                    <mat-form-field class="sub-input-control">
+                      <input matInput [matDatepicker]="picker1" placeholder="Inception Date" name="inceptionDate"
+                        [(ngModel)]="inceptionDate" [required]="!quote">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                      <mat-error *ngIf="!inceptionDate">
+                        Inception date <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6">
+                    <mat-form-field class="sub-input-control">
+                      <mat-select placeholder="Duration" [disableRipple]="true" [(ngModel)]="duration" name="duration"
+                        [required]="!quote">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let duration of durations" [value]="duration">{{duration}}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="!duration">
+                        Duration <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 3/13</span>What are the names of the parties involved in the (re)insurance policy?
+                  (including place of incorporation or nationality)?<a tabindex="2" class="btn" role="button"
+                    data-toggle="popover" data-trigger="focus" title="Note:" data-content="if you are aware of any ownership or control by a person or entities including any third
+                  party
+                  from a sanctioned country, please include this information.">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.1/13</span>The insured(s)/underlying insured(s):
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>ABC Airline</td>
+                                <td>UK</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>STR Airline</td>
+                                <td>Russia</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.2/13</span>The reinsured(s)/retrocedant(s): (where applicable)
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>XYZ Company</td>
+                                <td>UK</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.3/13</span>Any other entities or individuals insured or benefitting from the
+                          policy.
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group" style="border:none">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.4/13</span>Name of the WTW Client if different from 3.1 or 3.2 above
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 4/13</span>What is the name of the sanctioned country(ies) from the list above ?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <mat-select placeholder="Sanctioned country(ies)" [disableRipple]="true" name="sanctionedCountry"
+                      [(ngModel)]="sanctionedCountry" required multiple>
+                      <mat-option *ngFor="let country of sanctionedCountries" [value]="country">{{country}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!duration">
+                      Sanctioned countries <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 5/13</span>What is the type of (re)insurance ?<a tabindex="3" class="btn" role="button"
+                    data-toggle="popover" data-trigger="focus" title="Example:" data-content="marine cargo, D&O, liability">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <mat-select placeholder="Insurance type" name="insuranceTypes" [(ngModel)]="insuranceTypes"
+                      required multiple>
+                      <mat-option *ngFor="let type of insuranceType" [value]="type">{{type}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!insuranceTypes">
+                      Insurance type <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 6/13</span>What is the activity or operation being (re)insured?<a tabindex="4" class="btn"
+                    role="button" data-toggle="popover" data-trigger="focus" title="Example:" data-content="shipment of food, reinsurance of book of motor policies">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <input matInput type="text" placeholder="Activity/Operation" [(ngModel)]="activityValue" name="activity"
+                      required>
+                    <button mat-button *ngIf="activityValue" matSuffix mat-icon-button aria-label="Clear" (click)="activityValue=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="!activityValue">
+                      Activity name <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 7/13</span>Is the (re)insurance a global placement or is this a single risk policy
+                  covering
+                  only the Sanctioned Country noted above?<a tabindex="5" class="btn" role="button" data-toggle="popover"
+                    data-trigger="focus" title="Example:" data-content="does this policy cover South America, North America and the Caribbean or just Cuba.">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group value="1">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Global placement</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="2" color="primary">A Single risk
+                        policy involving only the sanctioned country mentioned above</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 8/13</span>Are any US citizens, US companies, US WTW colleagues or US WTW companies
+                  involved in this transaction?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group [(ngModel)]="usInvolved" name="usInvolved" [value]="usInvolved">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+                <div class="question-subpart" *ngIf="usInvolved=='1'">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Please explain the US involvement.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 9/13</span>Have any decisions been made in the US (whether on U.S. soil or U.S. airspace)
+                  about this transaction?<a tabindex="6" class="btn" role="button" data-toggle="popover" data-trigger="focus"
+                    title="Note:" data-content="This includes decisions made and business done whilst in the U.S. even if on holiday. Cuba.">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group value="2" [(ngModel)]="usDecisions" name="usDecisions">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+                <div class="question-subpart" *ngIf="usDecisions=='1'">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Please explain decisions made in US.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 10/13</span>Use of U.S. underwriters?<a tabindex="7" class="btn" role="button" data-toggle="popover"
+                    data-trigger="focus" title="Note:" data-content="Including non-U.S. subsidiaries of U.S. parents e.g., AIG Europe">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group value="2" [(ngModel)]="usUnderwriters" name="usUnderwriters">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+                <div class="question-subpart" *ngIf="usUnderwriters=='1'">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Please explain use of U.S underwriters.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 11/13</span>What currency(ies) will be used for premiums and claims?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <div class="col-sm-12 col-md-6 col-lg-6">
+                    <mat-form-field class="sub-input-control">
+                      <mat-select placeholder="Premiums" [(ngModel)]="premiumValue" name="premiumValue" required
+                        multiple>
+                        <mat-option *ngFor="let premium of premiums" [value]="premium">{{premium}}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="!premiumValue">
+                        Atleast one premium currency<strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6">
+                    <mat-form-field class="sub-input-control">
+                      <mat-select placeholder="Claims" [(ngModel)]="claimValue" name="claimValue" required multiple>
+                        <mat-option *ngFor="let claim of claims" [value]="claim">{{claim}}</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="!claimValue">
+                        Atleast one claim currency<strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 12/13</span>Please answer the following export questions, if the answer to any of the
+                  below
+                  is yes, then the Sanctions Team may need to ask for further information
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 12.1/13</span>Is the movement of Controlled Goods covered under this policy?<a
+                            tabindex="8" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Note:"
+                            data-content=" If yes, please complete the Controlled Goods Form found here">
+                            <mat-icon class="help-text">info_outlined</mat-icon>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <mat-radio-group value="2" [(ngModel)]="controlledGoodsInvolvement" name="controlledGoodsInvolvement">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                              <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                              <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                            </div>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 12.2/13</span>Is the movement of diamonds covered under this policy?<a tabindex="9"
+                            class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Note:"
+                            data-content="If yes, has the client provided you with their Kimberly Certificate?">
+                            <mat-icon class="help-text">info_outlined</mat-icon>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <mat-radio-group value="1">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                              <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                              <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                            </div>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group" style="border:none;">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 12.3/13</span>Is the petroleum, oil, gas or petrochemical industry or equipment
+                          for
+                          these industries covered under this policy?
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <mat-radio-group value="1">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                              <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                              <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                            </div>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 13/13</span>Use this box to provide any useful information to help the Sanctions Team
+                  assess
+                  your query
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Provide information.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="border-bottom: 1px solid silver; margin-top: 10px; padding-bottom: 10px;" *ngIf="controlledGoodsInvolvement!='1'">
+            <button type="button" mat-raised-button color="primary" (click)="imgFileInput.click()">Upload document</button>
+            <input hidden type="file" #imgFileInput multiple="multiple" (change)="preview($event)" />
+            {{fileName}}
+          </div>
+          <div class="form-button">
+            <button type="button" class="btn btn-secondary">Reset</button>
+            <button type="button" class="btn btn-secondary">Cancel</button>
+            <button *ngIf="controlledGoodsInvolvement!='1'" type="button" mat-raised-button color="primary" disabled>Submit</button>
+            <a routerLink="/controlled-goods">
+              <button *ngIf="controlledGoodsInvolvement=='1'" type="button" mat-raised-button color="primary">Next Form</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

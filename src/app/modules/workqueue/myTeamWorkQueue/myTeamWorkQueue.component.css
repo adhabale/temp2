@@ -1,0 +1,130 @@
+.question-group{
+    border-bottom: 1px dashed silver;
+    margin-top: 30px;
+}
+.question-body{
+    font-family: aileron-semibold;
+    font-size: 14px;
+    color:#202020;
+    font-weight: 600;
+}
+.question-body span{
+    margin-right: 15px;
+}
+
+span.question-hint{
+    font-family: aileron;
+    font-size: 14px;
+    color:#b7b6a9;
+    margin-left: 65px;
+}
+.workqueue-table{
+    /* margin-left: 65px; */
+    margin-top: 10px;
+}
+.hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 5px solid rgb(128, 255, 0);
+} 
+.example-full-width {
+    width: 50%;
+  }
+.mat-radio-button,
+.mat-form-field{
+      margin-bottom: 15px;
+  }
+.form-button{
+    margin-top: 10px;
+    text-align: right;
+}
+.form-button button{
+    margin-right: 8px;
+}
+.table{
+    width: 100%;
+}
+table tbody tr th{
+    width:15%;
+}
+.input-control{
+    width: 25%;
+}
+.sub-input-control{
+    width: 80%;
+}
+.mat-checkbox-layout{
+    padding-top: 15px;
+}
+.btn{
+    margin-bottom: 0px;
+}
+.popover-header{
+    margin-top: 0px !important;
+    background: #b7b6a9 !important;
+    font-family: aileron-semibold !important;
+}
+mat-button-toggle-group{
+    border:none;
+}
+.mat-button-toggle.mat-button-toggle-appearance-standard.mat-button-toggle-checked{
+    background-color: #702082;
+}
+mat-button-toggle.mat-button-toggle-appearance-standard{
+    background-color: #f0efde;
+}
+button.mat-button-toggle-button{
+    width: auto;
+}
+.control-label{
+    margin-top: 15px;
+}
+
+.help-text{
+    font-size: 18px;
+}
+
+.btn.focus, .btn:focus{
+    box-shadow: none;
+}
+mat-button-toggle-group mat-button-toggle button[aria-pressed='true']{
+    color: white;
+}
+
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard{
+    color: white;
+}
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+.sm-dropdown{
+    color: #702082;
+}
+.custom-padding{
+    margin-top: 15px;
+    padding-left:0!important;
+}
+.margin-7{
+    margin:5px!important;
+}
+button:focus{
+    outline: none!important;
+}
+.custom-margin{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.anchor{
+    cursor: pointer!important;
+    color: #5FB8F2 !important ;
+}
+.left-margin{
+    margin-left: 45px!important;
+}

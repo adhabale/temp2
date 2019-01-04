@@ -1,0 +1,220 @@
+<div class="page-title">
+    <div class="col-md-12 title_left">
+        <h1>My Task Workqueue</h1>
+
+    </div>
+        <!-- <div class="col-md-1">
+        <button mat-button [matMenuTriggerFor]="notifications">
+  <mat-icon matBadge="22" matBadgePosition="above after">home</mat-icon>
+</button>
+
+<mat-menu #notifications='matMenu'>
+  <button mat-menu-item [matMenuTriggerFor]="appPending">Approval Pending</button>
+   <button mat-menu-item [matMenuTriggerFor]="openQue">Open Queries</button> 
+</mat-menu>
+
+<mat-menu #appPending="matMenu">
+  <button mat-menu-item (click)='filter()'>Standard Sanction <span class="badge badge-dark">2</span></button>
+  <button mat-menu-item >Iran Sanction <span class="badge badge-dark">5</span></button>
+  <button mat-menu-item >Payments <span class="badge badge-dark">2</span></button>
+  <button mat-menu-item>Controlled Goods <span class="badge badge-dark">1</span></button>
+</mat-menu>
+      
+<mat-menu #openQue="matMenu">
+  <button mat-menu-item >Standard Sanction <span class="badge badge-dark">2</span></button>
+  <button mat-menu-item >Iran Sanction <span class="badge badge-dark">5</span></button>
+  <button mat-menu-item >Payments <span class="badge badge-dark">2</span></button>
+  <button mat-menu-item>Controlled Goods <span class="badge badge-dark">1</span></button>
+</mat-menu>
+
+        </div> -->
+</div>
+<div class="clearfix"></div>
+<div class="row">
+
+
+
+    <!--search panel-->
+    <div class="col-sm-12 col-md-12 col-lg-12 custom-margin">
+                <mat-accordion class="example-headers-align">
+                    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(0)" hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Search Criteria
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Filter the sanctions task
+                                <mat-icon style="color:#702082;">search</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field style="width:80%">
+                                        <mat-label>Request Id</mat-label>
+                                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                            cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field class="sub-input-control">
+                                        <mat-select placeholder="Territory" [disableRipple]="true" [(ngModel)]="territory"
+                                            name="territory">
+                                            <mat-option>None</mat-option>
+                                            <mat-option *ngFor="let territory of territorys" [value]="territory">{{territory}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div> -->
+             <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field class="sub-input-control">
+                                        <mat-select placeholder="Workstream" [disableRipple]="true" [(ngModel)]="workstream"
+                                            name="workstream">
+                                            <mat-option>None</mat-option>
+                                            <mat-option *ngFor="let workstream of workstreams" [value]="workstream">{{workstream}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                </div>
+                            </div>
+                             <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field class="sub-input-control">
+                                        <mat-select placeholder="Business Area" [disableRipple]="true" [(ngModel)]="ba"
+                                            name="businessArea">
+                                            <mat-option>None</mat-option>
+                                            <mat-option *ngFor="let ba of businessArea" [value]="ba">{{ba}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        
+                        </div>
+                        <div class="row">
+                            <!-- <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field class="sub-input-control">
+                                        <mat-select placeholder="Country" [disableRipple]="true" [(ngModel)]="country"
+                                            name="country">
+                                            <mat-option>None</mat-option>
+                                            <mat-option *ngFor="let country of sanctionCountries" [value]="country">{{country}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div> -->
+                            <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field class="sub-input-control">
+                                        <mat-select placeholder="Policy Type" [disableRipple]="true" [(ngModel)]="policytype"
+                                            name="policytype">
+                                            <mat-option>None</mat-option>
+                                            <mat-option *ngFor="let policytype of policytypes" [value]="policytype">{{policytype}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+                                    <mat-form-field class="sub-input-control">
+                                        <mat-select placeholder="Status" [disableRipple]="true" [(ngModel)]="status"
+                                            name="status">
+                                            <mat-option>None</mat-option>
+                                            <mat-option *ngFor="let status of statusList" [value]="status">{{status}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-10 left-margin">
+                                    <div class="form-button">
+
+                                        <button type="button" mat-raised-button color="basic">Reset</button>
+                                        <button type="button" mat-raised-button color="primary">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+       
+    </div>
+
+ 
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="workqueue-table">
+                            <table class="table">
+                                <tbody>
+                                    <tr style="color:#702082;">
+                                        <th style="width:10%">Request Id</th>
+                                        <!-- <th style="width:10%">Territory</th> -->
+                                        <th style="width:15%">Workstream</th>
+                                        <th style="width:20%">Business Area</th>
+                                        <th>Policy Type</th>
+                                        <!-- <th>Date of Policy</th>
+                                        <th>Assigned To</th> -->
+                                          <th>Country</th> 
+                                        <th>Status</th>
+                                        <th style="width:7%">RAG Status</th>
+                                        <th colspan="4">Actions</th>
+                                    
+
+                                    </tr>
+                                       <tr *ngFor='let item of tempdata'>
+                                        <td><a class="anchor" (click)='navigate(item.workStream)'>{{item.id}}</a>
+                                        <!-- </td>
+                                        <td>Broad</td> -->
+                                        <td>{{item.workStream}}</td>
+                                        <td>{{item.businessArea}}</td>
+                                        <td>{{item.policyType}}</td>
+                                        <td>{{item.country}}</td>
+                                        <!-- <td>{{item.assignedTo}}</td> -->
+                                        <td>{{item.status}}</td>
+                                        <td>
+                                            <mat-icon style="color:green">radio_button_checked</mat-icon>
+                                        </td>
+                                        <td><i class="material-icons" data-toggle="tooltip" title="Update Comment">create</i></td>
+                                        <td><i class="material-icons" data-toggle="tooltip" title="Raise Query">question_answer</i></td>
+                                        <td><i class="material-icons" data-toggle="tooltip" title="Delegate/Reasign">account_box</i></td>
+                                        <td><i class="material-icons" data-toggle="tooltip" title="Amendment"> border_color</i></td>
+
+                                       
+                                    </tr>
+                                   
+
+                                </tbody>
+                            </table>
+                            <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                                (page)="pageEvent = $event">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

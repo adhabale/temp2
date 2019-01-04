@@ -1,0 +1,328 @@
+<div class="page-title">
+  <div class="title_left">
+    <h1 translate>controlledGoods.title</h1>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-5">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <label class="control-label" translate>requestType.policyType</label>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-8">
+                <mat-button-toggle-group aria-label="Change color" name="policyType" [(ngModel)]="policyType">
+                  <mat-button-toggle id="primary" value="New Policy" i18n="@@newPolicy">{{'requestType.newPolicy' |
+                    translate}}</mat-button-toggle>
+                  <mat-button-toggle id="secondary" value="Renewal" i18n="@@renewal"> {{'requestType.renewal' |
+                    translate}}</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="control-label">
+              <mat-checkbox [(ngModel)]="quote" name="quote" color="primary">{{'requestType.quote' | translate}}</mat-checkbox>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="control-label">
+              <mat-checkbox [(ngModel)]="claim" color="primary">{{'requestType.claim' | translate}}</mat-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-5" *ngIf="claim||policyType=='Renewal'" style="padding-top:10px;">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <label class="control-label" i18n="@@policyNumber" translate>requestType.policyNumber</label>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-8">
+                <mat-form-field class="example-form-field">
+                  <input matInput type="text" placeholder="{{'requestType.policyNumber'|translate}}" [(ngModel)]="policyNumber">
+                  <button mat-button *ngIf="policyNumber" matSuffix mat-icon-button aria-label="Clear" (click)="policyNumber=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3" *ngIf="claim" style="padding-top:10px;">
+            <mat-form-field>
+              <input matInput [matDatepicker]="claimDatePicker" placeholder="{{'requestType.claimDate' |
+              translate}}"
+                [(ngModel)]="claimDate" required>
+              <mat-datepicker-toggle matSuffix [for]="claimDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #claimDatePicker></mat-datepicker>
+              <mat-error *ngIf="!claimDate">
+                Claim date <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4" *ngIf="claim">
+            <mat-form-field style="width:75%">
+              <mat-label i18n="@@claimDetails" translate>requestType.claimDetails</mat-label>
+              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <form id="controlledGoodsForm">
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 1/5</span>{{'controlledGoods.qOne.text'|translate}}<a tabindex="0" class="btn" role="button"
+                    data-toggle="popover" data-trigger="focus" title="Example:" data-content="Please list the names of all the goods here e.g., ammunition, guided missile, assault rifle, circuit boards, guidance system software, spare tyres for military vehicles">
+                    <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <input matInput type="text" placeholder="{{'controlledGoods.qOne.placeholder'|translate}}"
+                      [(ngModel)]="goodsDetail" name="goodsDetail" required>
+                    <button mat-button *ngIf="goodsDetail" matSuffix mat-icon-button aria-label="Clear" (click)="goodsDetail=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="!goodsDetail">
+                      {{'controlledGoods.qOne.error'|translate}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 2/5</span>{{'controlledGoods.qTwo.text'|translate}}
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <mat-select placeholder="{{'controlledGoods.qTwo.placeholder'|translate}}" [disableRipple]="true"
+                      [(ngModel)]="goodsSource" name="goodsSource" required>
+                      <mat-option *ngFor="let sourceCountry of sourceCountries" [value]="sourceCountry">{{sourceCountry}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!goodsSource">
+                      {{'controlledGoods.qTwo.error'|translate}}
+                    </mat-error>
+                  </mat-form-field>
+                  <div class="question-group" style="margin-top:0px;">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 2.1/5</span>{{'controlledGoods.qTwo.twoSubOne.text'|translate}}
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <mat-form-field class="input-control">
+                            <mat-select placeholder="{{'controlledGoods.qTwo.twoSubOne.placeholder'|translate}}"
+                              [disableRipple]="true" [(ngModel)]="goodsDestination" name="goodsDestination" required>
+                              <mat-option *ngFor="let sourceCountry of sourceCountries" [value]="sourceCountry">{{sourceCountry}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="!goodsDestination">
+                              {{'controlledGoods.qTwo.twoSubOne.error'|translate}}
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group" style="border:none">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 2.2/5</span>{{'controlledGoods.qTwo.twoSubTwo.text'|translate}}
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <mat-form-field class="input-control">
+                            <mat-select placeholder="{{'controlledGoods.qTwo.twoSubTwo.placeholder'|translate}}"
+                              [disableRipple]="true" [(ngModel)]="goodsDestinationVia" name="goodsDestinationVia"
+                              required>
+                              <mat-option value="None">None</mat-option>
+                              <mat-option *ngFor="let sourceCountry of sourceCountries" [value]="sourceCountry">{{sourceCountry}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="!goodsDestinationVia">
+                              {{'controlledGoods.qTwo.twoSubTwo.error'|translate}}
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 3/5</span>{{'controlledGoods.qThree.text'|translate}}
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.1/13</span>{{'controlledGoods.qThree.threeSubOne.text'|translate}}
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>ABC Entity</td>
+                                <td>Turkey</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.2/5</span>{{'controlledGoods.qThree.threeSubTwo.text'|translate}}<a tabindex="2"
+                            class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Example:"
+                            data-content="include, any third parties advisers, third party subsidiaries or joint-ventures">
+                            <mat-icon class="help-text">info_outlined</mat-icon>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>XYZ Airline</td>
+                                <td>Belgium</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 4/5</span>{{'controlledGoods.qFour.text'|translate}}<a tabindex="0" class="btn" role="button"
+                    data-toggle="popover" data-trigger="focus" title="Example:" data-content="the Ministry of Defence, Germany">
+                    <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <input matInput type="text" placeholder="{{'controlledGoods.qFour.placeholder'|translate}}"
+                      [(ngModel)]="goodsRecipients" name="goodsRecipients" required>
+                    <button mat-button *ngIf="goodsRecipients" matSuffix mat-icon-button aria-label="Clear" (click)="goodsRecipients=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="!goodsRecipients">
+                      {{'controlledGoods.qFour.error'|translate}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 5/5</span>{{'controlledGoods.qFive.text'|translate}}<a tabindex="0" class="btn" role="button"
+                    data-toggle="popover" data-trigger="focus" title="Example:" data-content="has the client provided you with an export control permit or are they operating under a general licence? Is this a UN or NATO contract?">
+                    <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>{{'queryInformation.queryInfo'|translate}}</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="border-bottom: 1px solid silver; margin-top: 10px; padding-bottom: 10px;">
+            <button type="button" mat-raised-button color="primary" (click)="imgFileInput.click()">{{'buttons.uploadDoc'|translate}}</button>
+            <input hidden type="file" #imgFileInput multiple="multiple" (change)="preview($event)" />
+            {{fileName}}
+          </div>
+          <div class="form-button">
+            <button type="button" class="btn btn-secondary">{{'buttons.reset'|translate}}</button>
+            <button type="button" class="btn btn-secondary">{{'buttons.cancel'|translate}}</button>
+            <button type="button" mat-raised-button color="primary" disabled>{{'buttons.submit'|translate}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

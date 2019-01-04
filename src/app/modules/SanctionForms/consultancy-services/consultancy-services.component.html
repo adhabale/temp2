@@ -1,0 +1,319 @@
+<div class="page-title">
+  <div class="title_left">
+    <h1>Sanctions Form for Consultancy Services</h1>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <form id="consultancyServicesForm">
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 1/9</span>Please describe the consultancy/advisory services being provided?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <input matInput type="text" placeholder="Services provided" [(ngModel)]="servicesProvided" name="servicesProvided"
+                      required>
+                    <button mat-button *ngIf="servicesProvided" matSuffix mat-icon-button aria-label="Clear" (click)="servicesProvided=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="!servicesProvided">
+                      Consultancy/advisory details <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 2/9</span>What date will the consultancy/advisory services commence?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="commencementDatePicker" placeholder="Choose commencement date"
+                      [(ngModel)]="commencementDate" name="commencementDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="commencementDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #commencementDatePicker></mat-datepicker>
+                    <mat-error *ngIf="!commencementDate">
+                      Commencement date <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 3/9</span>What are the names of the parties that the services are being provided to?
+                  (including place of incorporation or nationality)?<a tabindex="0" class="btn" role="button"
+                    data-toggle="popover" data-trigger="focus" title="Note:" data-content="if you are aware of any ownership or control by a person or entities including any third party from a sanctioned country, please include this information.">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.1/9</span>The client:
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>FGH Entity</td>
+                                <td>Russia</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="question-group">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="question-body">
+                          <span>Q- 3.2/9</span>Any other third parties involved in the transaction.<a tabindex="1"
+                            class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Example:"
+                            data-content="include, any third parties to whom our work product may be disclosed, other third party advisers, third party subsidiaries and joint-ventures">
+                            <mat-icon class="help-text">info_outlined</mat-icon>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="question-subpart">
+                          <table class="table">
+                            <tbody>
+                              <tr style="color:#702082;">
+                                <th style="width: 5%"></th>
+                                <th>Name</th>
+                                <th>Nationality/Place of incorporation </th>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon>remove</mat-icon>
+                                </td>
+                                <td>XYZ Company</td>
+                                <td>UK</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-icon color="primary">add_box</mat-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 4/9</span>What is the name of the sanctioned country(ies) from the list above?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <mat-select placeholder="Sanctioned countries" [disableRipple]="true" [(ngModel)]="sanctionedCountries"
+                      name="sanctionedCountries" required multiple>
+                      <mat-option *ngFor="let sourceCountry of sourceCountries" [value]="sourceCountry">{{sourceCountry}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!sanctionedCountries">
+                      Sanctioned countries <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 5/9</span>Are any US citizens, US companies, US WTW colleagues or US WTW companies
+                  involved in this transaction?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group [(ngModel)]="usInvolved" name="usInvolved" [value]="usInvolved">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+                <div class="question-subpart" *ngIf="usInvolved=='1'">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Please explain the US involvement.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 6/9</span>Have any decisions been made in the US (whether on U.S. soil or U.S. airspace)
+                  about this transaction?<a tabindex="2" class="btn" role="button" data-toggle="popover" data-trigger="focus"
+                    title="Note:" data-content="This includes decisions made and business done whilst in the U.S. even if on holiday. Cuba.">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group value="2" [(ngModel)]="usDecisions" name="usDecisions">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+                <div class="question-subpart" *ngIf="usDecisions=='1'">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Please explain decisions made in US.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 7/9</span>What currency(ies) will be used for payment of the services?
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="input-control">
+                    <mat-select placeholder="Premiums" [(ngModel)]="currencyValue" name="currencyValue" required multiple>
+                      <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!currencyValue">
+                      Atleast one currency<strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q-8/9</span>Is the clients business concerned with the arms trade or the movement of military,
+                  controlled or dual-use goods or software?<a tabindex="3" class="btn" role="button" data-toggle="popover"
+                    data-trigger="focus" title="Note:" data-content="If yes, please provide more details on the client and whether the services Willis Towers Watson are providing will facilitate the trading of these goods or software.">
+                    <mat-icon class="help-text">info_outlined</mat-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-radio-group value="2" [(ngModel)]="clientBusiness" name="clientBusiness">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                      <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+                <div class="question-subpart" *ngIf="clientBusiness=='1'">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Please explain decisions made in US.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="question-group">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="question-body">
+                  <span>Q- 9/9</span>Use this box to provide any useful information to help the Sanctions Team
+                  assess your query.
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="question-subpart">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Provide information.</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="border-bottom: 1px solid silver; margin-top: 10px; padding-bottom: 10px;">
+            <button type="button" mat-raised-button color="primary" (click)="imgFileInput.click()">Upload document</button>
+            <input hidden type="file" #imgFileInput multiple="multiple" (change)="preview($event)" />
+            {{fileName}}
+          </div>
+          <div class="form-button">
+            <button type="button" class="btn btn-secondary">Reset</button>
+            <button type="button" class="btn btn-secondary">Cancel</button>
+            <button type="button" mat-raised-button color="primary" disabled>Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+
+.footer-logo{
+    height: .74rem;
+    margin-right: 1rem;
+}
+.footer-link{
+    color: #6f2a80;
+    font-weight: 500;
+    margin-left: 1rem;
+}
+.footer-copyright{
+    text-align: right;
+}

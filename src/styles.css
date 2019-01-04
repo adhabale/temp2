@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "../src/assets/CSS/custom.css";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+h1{
+    font-family: aileron-black;
+    font-size: 24px;
+    color: #702082;
+}
+h2{
+    font-family: aileron-semibold;
+    font-size: 18px;
+    color: #202020;
+}
+.footer-content{
+    background-color: #f0efde;
+    font-size: .75rem;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}

@@ -1,0 +1,74 @@
+<!-- <div class="top_nav">
+  <div class="nav_menu">
+    <nav>
+      <div class="nav-header">
+        <div class="nav toggle">
+          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="flex-spacer"></div>
+        <div class="nav navbar-nav navbar-right">
+          <button mat-button [matMenuTriggerFor]="menu" class="mat-button">
+            <span class="mat-button-wrapper"> {{language}}
+              <mat-icon role="img" aria-hidden="true">arrow_drop_down</mat-icon>
+            </span>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="useLanguage('en','English')">English</button>
+            <button mat-menu-item (click)="useLanguage('fr','French')">French</button>
+          </mat-menu>
+        </div>
+        <a class='anchor' (click)='filter("Standard Sanction")'>Standard sanction</a>
+                <a class='anchor' (click)='filter("Iran Sanction")'>Iran sanction</a>
+
+      </div>
+    </nav>
+  </div>
+</div> -->
+
+
+<div class="top_nav">
+  <div class="nav_menu">
+    <nav>
+      <div class="nav-header">
+        <div class="nav toggle">
+          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="flex-spacer"></div>
+        <div class="nav navbar-nav navbar-right">
+          <span [matMenuTriggerFor]="notification" class="mat-button-wrapper">
+            <i class="material-icons" matBadge="4" matBadgeColor="warn">
+              notifications
+            </i>
+          </span>
+          
+          <mat-menu #notification="matMenu">            
+            <button mat-menu-item style="height:40px">
+              <!-- <span class="badge badge-dark">2</span>  -->
+              <span>  <a class='anchor' (click)='filter("Standard Sanction")'>Standard sanction:2</a></span>
+            </button>
+            <button mat-menu-item style="height:40px">
+              <!-- <mat-icon>voicemail</mat-icon> -->
+              <span> <a class='anchor' (click)='filter("Iran Sanction")'>Iran sanction:1</a></span>
+            </button>
+            <button mat-menu-item style="height:40px">
+              <!-- <mat-icon>notifications_off</mat-icon> -->
+              <span> <a class='anchor' (click)='filter("Control Goods")'>Control goods:1</a></span>
+            </button>
+          </mat-menu>
+        </div>&nbsp;
+
+        <div class="nav navbar-nav navbar-right">
+          <button mat-button [matMenuTriggerFor]="menu" class="mat-button">
+            <span class="mat-button-wrapper"> {{language}}
+              <mat-icon role="img" aria-hidden="true">arrow_drop_down</mat-icon>
+            </span>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="useLanguage('en','English')">English</button>
+            <button mat-menu-item (click)="useLanguage('fr','French')">French</button>
+          </mat-menu>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

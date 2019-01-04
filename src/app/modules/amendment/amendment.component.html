@@ -1,0 +1,110 @@
+<div class="page-title">
+  <div class="title_left">
+    <h1>Amendment</h1>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Search Criteria
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="col-sm-12 col-md-12 col-lg-10">
+                  <mat-form-field style="width:80%">
+                    <mat-label>Request Id</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="col-sm-12 col-md-12 col-lg-10">
+                  <mat-form-field class="sub-input-control">
+                    <mat-select placeholder="Territory" [disableRipple]="true" [(ngModel)]="territory" name="territory">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let territory of territorys" [value]="territory">{{territory}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="col-sm-12 col-md-12 col-lg-10">
+                  <mat-form-field class="sub-input-control">
+                    <mat-select placeholder="Workstream" [disableRipple]="true" [(ngModel)]="workstream" name="workstream">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let workstream of workstreams" [value]="workstream">{{workstream}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-button">
+              <button type="button" mat-raised-button color="basic">Reset</button>
+              <button type="button" mat-raised-button color="primary">Search</button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="workqueue-table">
+              <table class="table">
+                <tbody>
+                  <tr style="color:#702082;">
+                    <th>Request Id</th>
+                    <th>Territory</th>
+                    <th>Workstream</th>
+                  </tr>
+                  <tr>
+                    <td>12345</td>
+                    <td>Broad</td>
+                    <td>Standard Sanction</td>
+                  </tr>
+                  <tr>
+                    <td>12346</td>
+                    <td>SMART</td>
+                    <td>Standard Sanction</td>
+                  </tr>
+                  <tr>
+                    <td>12347</td>
+                    <td>Broad</td>
+                    <td>Iran Form</td>
+                  </tr>
+                  <tr>
+                    <td>12348</td>
+                    <td>Broad</td>
+                    <td>Consultancy Service Form</td>
+                  </tr>
+                  <tr>
+                    <td>12349</td>
+                    <td>Broad</td>
+                    <td>Payment Form</td>
+                  </tr>
+                </tbody>
+              </table>
+              <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event">
+              </mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+{
+    "requestType": {
+        "policyType": "Policy type",
+        "newPolicy": "New policy",
+        "renewal": "Renewal",
+        "quote": "Quote",
+        "claim": "Claim",
+        "claimDate": "Claim date",
+        "policyNumber": "Policy number",
+        "claimDetails": "Claim details"
+    },
+    "helpText": {
+        "example": "Example:",
+        "note": "Note:"
+    },
+    "queryInformation": {
+        "queryInfo": "Provide further information"
+    },
+    "buttons":{
+        "uploadDoc":"Upload Document",
+        "cancel":"Cancel",
+        "reset":"Reset",
+        "submit":"Submit"
+    },
+    "controlledGoods": {
+        "title": "Sanctions Form for the Movement of Controlled Goods",
+        "qOne": {
+            "text": "What are the military, controlled or dual-use goods?",
+            "help": "Please list the names of all the goods here e.g., ammunition, guided missile, assault rifle, circuit boards, guidance system software, spare tyres for military vehicles",
+            "error": "Goods details required",
+            "placeholder": "Goods Details"
+        },
+        "qTwo": {
+            "text": "What country do the goods originate from?",
+            "help": "",
+            "error": "Source country required",
+            "placeholder": "Goods source",
+            "twoSubOne": {
+                "text": "What country are the goods going to?",
+                "help": "",
+                "error": "Destination country required",
+                "placeholder":"Goods destination"
+            },
+            "twoSubTwo": {
+                "text": "Are the goods going via another country?",
+                "help": "",
+                "error": "Goods via details required",
+                "placeholder":"Via country detail"
+            }
+        },
+        "qThree": {
+            "text": "What are the names of the client and other parties involved in the transaction?",
+            "help": "",
+            "error": "",
+            "placeholder": "",
+            "threeSubOne": {
+                "text": "The client/(re)insured:",
+                "help": "",
+                "error": "",
+                "placeholder": ""
+            },
+            "threeSubTwo": {
+                "text": "Other third parties involved in the transaction.",
+                "help": "",
+                "error": "",
+                "placeholder": ""
+            }
+        },
+        "qFour": {
+            "text": "What is the name of the recipient of the goods?",
+            "help": "",
+            "error": "Goods recipients detail required",
+            "placeholder": "Goods recipients"
+        },
+        "qFive": {
+            "text": "Use this box to provide any useful information to help the Sanctions Team assess your query",
+            "help": "",
+            "error": "",
+            "placeholder": ""
+        }
+    }
+}

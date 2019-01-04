@@ -1,0 +1,1163 @@
+<div class="page-title">
+  <div class="title_left">
+    <h1>Sanctions Form for Transactions Involving Iran</h1>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <label class="control-label">Policy Type</label>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-8">
+                <mat-button-toggle-group value="New Policy" aria-label="Change color" name="policyType" [(ngModel)]="policyType">
+                  <mat-button-toggle id="primary" value="New Policy"> New Policy </mat-button-toggle>
+                  <mat-button-toggle id="secondary" value="Renewal"> Renewal </mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="control-label">
+              <mat-checkbox [(ngModel)]="quote" color="primary">Quote</mat-checkbox>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="control-label">
+              <mat-checkbox [(ngModel)]="claim" color="primary">Claim</mat-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4" *ngIf="claim||policyType=='Renewal'" style="padding-top:10px;">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-4">
+                <label class="control-label">Policy number</label>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-8">
+                <mat-form-field class="example-form-field">
+                  <input matInput type="text" placeholder="Policy Number" [(ngModel)]="policyNumber">
+                  <button mat-button *ngIf="policyNumber" matSuffix mat-icon-button aria-label="Clear" (click)="policyNumber=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4" *ngIf="claim" style="padding-top:10px;">
+            <mat-form-field>
+              <input matInput [matDatepicker]="claimDatePicker" placeholder="Claim Date" [(ngModel)]="claimDate"
+                required>
+              <mat-datepicker-toggle matSuffix [for]="claimDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #claimDatePicker></mat-datepicker>
+            </mat-form-field>
+            <!-- <mat-error *ngIf="!claimDate">
+              Claim date <strong>required</strong>
+            </mat-error> -->
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4" *ngIf="claim">
+            <mat-form-field style="width:75%">
+              <mat-label>Claim Details</mat-label>
+              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <form id="iranSanctionForm">
+          <mat-horizontal-stepper [linear]="true" labelPosition="bottom" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <ng-template matStepLabel>Fill out your name</ng-template>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 1/32</span>What is the name of your business area and the office location?<a tabindex="0"
+                        class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Example:"
+                        data-content="CRB (GB) – Transportation (Marine) or HCB (GB) – London or IRR (Willis Re) – International APMETA">
+                        <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <table class="table">
+                        <tbody>
+                          <tr style="color:#702082;">
+                            <th style="width: 5%"></th>
+                            <th>Business Area</th>
+                            <th>Office location</th>
+                            <th>WTW Legal Entity</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <mat-icon>remove</mat-icon>
+                            </td>
+                            <td>
+                              Marine – GB</td>
+                            <td>London</td>
+                            <td>Willis Towers Watson Consulting </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <mat-icon color="primary">add_box</mat-icon>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 2/32</span>Date the policy will incept and the duration of the policy or if consultancy
+                      services, the date the contract will commence?<a tabindex="1" class="btn" role="button"
+                        data-toggle="popover" data-trigger="focus" title="Example:" data-content="January 1 for 12 months">
+                        <mat-icon class="help-text">info_outlined</mat-icon>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <div class="col-sm-12 col-md-6 col-lg-6">
+                        <mat-form-field class="sub-input-control">
+                          <input matInput [matDatepicker]="picker1" placeholder="Inception Date" name="inceptionDate"
+                            [(ngModel)]="inceptionDate" [required]="!quote">
+                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                          <mat-datepicker #picker1></mat-datepicker>
+                          <mat-error *ngIf="!inceptionDate">
+                            Inception date <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6 col-lg-6">
+                        <mat-form-field class="sub-input-control">
+                          <mat-select placeholder="Duration" [disableRipple]="true" [(ngModel)]="duration" name="duration"
+                            [required]="!quote">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let duration of durations" [value]="duration">{{duration}}</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="!duration">
+                            Duration <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 3/32</span>What is the type of (re)insurance or services being provided?
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-form-field class="input-control">
+                        <mat-select placeholder="(re)Insurance or services" [disableRipple]="true" [(ngModel)]="reInsuranceServices"
+                          name="reInsuranceServices" required multiple>
+                          <mat-option *ngFor="let reInsuranceService of reInsuranceServicesList" [value]="reInsuranceService">{{reInsuranceService}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!reInsuranceServices">
+                          (re)Insurance or services details <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 4/33</span>What is the purpose of the (re)insurance or services being provided?
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Provide details.</mat-label>
+                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                          cdkAutosizeMaxRows="5"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 5/32</span>Does this business involve the provision of services to or within Iran? If
+                      so,
+                      please specify what these services are and who is benefiting from them.
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Provide details.</mat-label>
+                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                          cdkAutosizeMaxRows="5"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 6/32</span>Is the proposed transaction specifically in relation to Iran? Or is the
+                      transaction a global transaction with only a percentage of it involving Iran? <a tabindex="5"
+                        class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Example:"
+                        data-content="is this a global insurance policy or an Iran only insurance policy?  Or is the contract for services for international services including Iran or only for Iran services?">
+                        <mat-icon class="help-text">info_outlined</mat-icon>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-radio-group value="1">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                          <mat-radio-button value="1" color="primary">Global</mat-radio-button>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                          <mat-radio-button value="2" color="primary">A single risk policy only relating to the
+                            sanctioned country</mat-radio-button>
+                        </div>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 7/32</span>How much revenue will Willis Towers Watson earn from the Iranian risk? Do you
+                      believe this to be accurate or an estimate of the revenue generated?
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Provide details.</mat-label>
+                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                          cdkAutosizeMaxRows="5"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 8/32</span>Is there any other sanctioned country involved?
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-form-field class="input-control">
+                        <mat-select placeholder="Sanctioned country(ies)" [disableRipple]="true" name="sanctionedCountry"
+                          [(ngModel)]="sanctionedCountry" required multiple>
+                          <mat-option *ngFor="let country of sanctionedCountries" [value]="country">{{country}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!duration">
+                          Sanctioned countries <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="question-group">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="question-body">
+                      <span>Q- 9/32</span>What currency(ies) will be used?
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="question-subpart">
+                      <mat-form-field class="input-control">
+                        <mat-select placeholder="Premiums" [(ngModel)]="currencyValue" name="currencyValue" required
+                          multiple>
+                          <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!currencyValue">
+                          Atleast one currency<strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-button">
+                <button mat-raised-button color="primary" matStepperNext>Next Page</button>
+              </div>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form>
+                <ng-template matStepLabel>Parties involved</ng-template>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 10/32</span>What are the names of the parties involved in this transaction? (including
+                        place of incorporation or nationality)? <a tabindex="2" class="btn" role="button" data-toggle="popover"
+                          data-trigger="focus" title="Note:" data-content="if you are aware of any ownership or control by a person or entities including any third party from a sanctioned country, please include this information.">
+                          <mat-icon class="help-text">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <div class="question-group">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="question-body">
+                                <span>Q- 10.1/32</span>The client:
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                              <div class="question-subpart">
+                                <table class="table">
+                                  <tbody>
+                                    <tr style="color:#702082;">
+                                      <th style="width: 5%"></th>
+                                      <th>Name</th>
+                                      <th>Nationality/Place of incorporation </th>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon>remove</mat-icon>
+                                      </td>
+                                      <td>UN</td>
+                                      <td>Switzerland</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon color="primary">add_box</mat-icon>
+                                      </td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="question-group">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="question-body">
+                                <span>Q- 10.2/13</span>The insured:
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                              <div class="question-subpart">
+                                <table class="table">
+                                  <tbody>
+                                    <tr style="color:#702082;">
+                                      <th style="width: 5%"></th>
+                                      <th>Name</th>
+                                      <th>Nationality/Place of incorporation </th>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon>remove</mat-icon>
+                                      </td>
+                                      <td>UN</td>
+                                      <td>Switzerland</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon color="primary">add_box</mat-icon>
+                                      </td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="question-group">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="question-body">
+                                <span>Q- 10.3/32</span>The reinsured/retrocedents:
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                              <div class="question-subpart">
+                                <table class="table">
+                                  <tbody>
+                                    <tr style="color:#702082;">
+                                      <th style="width: 5%"></th>
+                                      <th>Name</th>
+                                      <th>Nationality/Place of incorporation </th>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon color="primary">add_box</mat-icon>
+                                      </td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="question-group" style="border:none">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="question-body">
+                                <span>Q- 10.4/32</span>Any other third parties involved in the transaction : <a
+                                  tabindex="2" class="btn" role="button" data-toggle="popover" data-trigger="focus"
+                                  title="Example:" data-content="include, any third parties to whom our work product may be disclosed, other third party advisers, third party subsidiaries and joint-ventures.">
+                                  <mat-icon class="help-text">info_outlined</mat-icon>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                              <div class="question-subpart">
+                                <table class="table">
+                                  <tbody>
+                                    <tr style="color:#702082;">
+                                      <th style="width: 5%"></th>
+                                      <th>Name</th>
+                                      <th>Nationality/Place of incorporation </th>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon>remove</mat-icon>
+                                      </td>
+                                      <td>N/A</td>
+                                      <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <mat-icon color="primary">add_box</mat-icon>
+                                      </td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 11/32</span>Name of the end users of products or services in Iran:
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 12/32</span>Will any payments be routed through Iranian banks? If yes provide names:
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="iranianBanks" name="iranianBanks" [value]="iranianBanks">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="iranianBanks=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide names</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 13/32</span>Is there Iranian government or state involvement?<a tabindex="4" class="btn"
+                          role="button" data-toggle="popover" data-trigger="focus" title="Note:" data-content="This will include entities which have known or suspected links to the Iranian government (whether through ownership, control or commercial relationships), such as Islamic Republic of Iran Shipping Lines, Naftiran Intertrade Co., etc. If yes, provide details.">
+                          <mat-icon class="help-text">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="iranianGovtInvolvement" name="iranianGovtInvolvement" [value]="iranianGovtInvolvement">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="iranianGovtInvolvement=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide names</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left:0px">
+                  <div class="form-button-left">
+                    <button mat-raised-button matStepperPrevious>Previous Page</button>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-right:0px">
+                  <div class="form-button-right">
+                    <button mat-raised-button color="primary" matStepperNext>Next Page</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="thirdFormGroup">
+              <form>
+                <ng-template matStepLabel>United States involvement</ng-template>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 14/32</span>Are any U.S. citizens, companies or Willis Towers Watson colleagues or
+                        companies involved in this transaction?<a tabindex="4" class="btn" role="button" data-toggle="popover"
+                          data-trigger="focus" title="Note:" data-content="If yes, please provide further details. ">
+                          <mat-icon class="help-text">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="usInvolved" name="usInvolved" [value]="usInvolved">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="usInvolved=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide names</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 15/32</span>Have any decisions been made in the US (whether on U.S. soil or U.S.
+                        airspace)
+                        about this transaction?<a tabindex="6" class="btn" role="button" data-toggle="popover"
+                          data-trigger="focus" title="Note:" data-content="This includes decisions made and business done whilst in the U.S. even if on holiday. Cuba.">
+                          <mat-icon class="help-text">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group value="2" [(ngModel)]="usDecisions" name="usDecisions">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="usDecisions=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Please explain decisions made in US.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 16/32</span>Are any U.S. insurance underwriters, third parties, suppliers, agents or
+                        obligors involved in this transaction?<a tabindex="6" class="btn" role="button" data-toggle="popover"
+                          data-trigger="focus" title="Example:" data-content="AIG Europe, Federal Express, Bank of America, Deloitte">
+                          <mat-icon class="help-text">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group value="2" [(ngModel)]="usUnderWritersInvolved" name="usUnderWritersInvolved">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 17/32</span>Are any of the parties named in section 10 subsidiary companies of U.S.
+                        parent companies?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group value="2" [(ngModel)]="usSubsidiary" name="usSubsidiary">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="usSubsidiary=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide names.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left:0px">
+                  <div class="form-button-left">
+                    <button mat-raised-button matStepperPrevious>Previous Page</button>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-right:0px">
+                  <div class="form-button-right">
+                    <button mat-raised-button color="primary" matStepperNext>Next Page</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="fourthFormGroup">
+              <form>
+                <ng-template matStepLabel>Insurance and reinsurance specific questions</ng-template>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 18/32</span>Will any Iranian nationals be insured (including third party liability)?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group value="2" [(ngModel)]="insureIranianNational" name="insureIranianNational">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="insureIranianNational=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide names.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 19/5</span>If the cover is not solely in respect of an Iranian risk, can you please
+                        confirm in percentage what the Iranian risk amounts to, in comparison to the whole cover?<a
+                          tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Example:"
+                          data-content="Proportion of volume of sales/shipments from/to Iran or number of Iranian nationals covered, etc., in comparison to total volume of sales/shipments throughout the policy period or total number of individuals covered, etc.">
+                          <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-form-field class="input-control">
+                          <input matInput type="number" placeholder="Iranian risk amount(%)" [(ngModel)]="iranianRiskAmount"
+                            name="iranianRiskAmount" min="0">
+                          <span matSuffix>%</span>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 20/32</span>If this is reinsurance, is it facultative or is it treaty?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-form-field class="input-control">
+                          <mat-select placeholder="Select type" [disableRipple]="true" [(ngModel)]="InsuranceType" name="InsuranceType"
+                            required>
+                            <mat-option *ngFor="let insuranceType of insuranceTypes" [value]="insuranceType">{{insuranceType}}</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="!InsuranceType">
+                            Insurance type <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 21/32</span>If (re)insurance covers a shipment of goods, please name any Iranian
+                        consignees and charterers:
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-form-field class="input-control">
+                          <mat-select placeholder="Select type" [disableRipple]="true" [(ngModel)]="iranianConsigneeDetail"
+                            name="iranianConsigneeDetail" required>
+                            <mat-option *ngFor="let iranianConsignee of iranianConsignees" [value]="iranianConsignee">{{iranianConsignee}}</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="!iranianConsigneeDetail">
+                            Consignee or Charteres <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left:0px">
+                  <div class="form-button-left">
+                    <button mat-raised-button matStepperPrevious>Previous Page</button>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-right:0px">
+                  <div class="form-button-right">
+                    <button mat-raised-button color="primary" matStepperNext>Next Page</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="fifthFormGroup">
+              <form>
+                <ng-template matStepLabel>Details about Iranian exposure</ng-template>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 22/32</span>Will the client travel to Iran?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group value="2" [(ngModel)]="iranTravel" name="iranTravel">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="2" color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                        <div class="question-group" style="border:none" *ngIf="iranTravel=='1'">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="question-body">
+                                <span>Q- 22.2/32</span>If yes what exactly is the purpose of the travel? What will the
+                                client be doing in Iran? Will the client meet Iranian persons or entities?<a tabindex="0"
+                                  class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Note:"
+                                  data-content="Please ensure details have been included in section 10 above.">
+                                  <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                              <div class="question-subpart">
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Provide information.</mat-label>
+                                  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 23/32</span>Does this transaction involve the sale, supply, transfer, export or import
+                        of goods/products/ services to or from Iran? <a tabindex="4" class="btn" role="button"
+                          data-toggle="popover" data-trigger="focus" title="Note:" data-content="Please specify what they are and if they are going to or from Iran.">
+                          <mat-icon class="help-text">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="iranInvolved" name="iranInvolved" [value]="iranInvolved">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="iranInvolved=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 24/32</span>What is the end use of the products/goods or services in Iran?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 25/32</span>Are the products/goods, software, technology or services of U.S. origin or
+                        contain more than 10% of U.S. origin components?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="usOrigin" name="usOrigin" [value]="usOrigin">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="usOrigin=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 26/32</span>Are the goods weapons of mass destruction or products/goods, software,
+                        technology or services to be used in the development or manufacture of weapons of mass
+                        destruction?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="massDestructionWeapons" name="massDestructionWeapons" [value]="massDestructionWeapons">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="massDestructionWeapons=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 27/32</span>Are the goods controlled goods, weapons, arms or equipment which can be
+                        used for internal repression?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="internalRepression" name="internalRepression" [value]="internalRepression">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="internalRepression=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 28/32</span>Are the products/goods, software, technology or services related to
+                        nuclear enrichment or nuclear weapon systems including nuclear reactors?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="nuclearReactors" name="nuclearReactors" [value]="nuclearReactors">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="nuclearReactors=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 29/32</span>Are the products/goods, software, technology or services dual use goods?<a
+                          tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Example:"
+                          data-content="telecoms systems, information security systems?">
+                          <mat-icon class="help-text" (click)="showInfo()">info_outlined</mat-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="dualUseGoods" name="dualUseGoods" [value]="dualUseGoods">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="dualUseGoods=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 30/32</span>Are the products/goods graphite, raw or semi-finished metals including
+                        iron, steel, nickel, aluminum, titanium and alloys in any form?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="materialUsed" name="materialUsed" [value]="materialUsed">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="materialUsed=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 31/32</span>Are the products/goods crude oil, petroleum or petrochemical products or
+                        equipment for the development of these products?
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-radio-group [(ngModel)]="petrochemicalProduct" name="petrochemicalProduct" [value]="petrochemicalProduct">
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="1" color="primary">Yes</mat-radio-button>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-6">
+                            <mat-radio-button value="0" checked color="primary">No</mat-radio-button>
+                          </div>
+                        </mat-radio-group>
+                      </div>
+                      <div class="question-subpart" *ngIf="petrochemicalProduct=='1'">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide details.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="question-group">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="question-body">
+                        <span>Q- 32/32</span>Use this box to provide any useful information to help the Sanctions Team
+                        assess your query
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="question-subpart">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Provide information.</mat-label>
+                          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="border-bottom: 1px solid silver; margin-top: 10px; padding-bottom: 10px;">
+                  <button type="button" mat-raised-button color="primary" (click)="imgFileInput.click()">Upload
+                    document</button>
+                  <input hidden type="file" #imgFileInput multiple="multiple" (change)="preview($event)" />
+                  {{fileName}}
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left:0px">
+                  <div class="form-button-left">
+                    <button class="btn btn-secondary" matStepperPrevious>Previous Page</button>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6" style="padding-right:0px">
+                  <div class="form-button-right">
+                    <button (click)="stepper.reset()" class="btn btn-secondary">Reset</button>
+                    <button mat-raised-button color="primary" matStepperNext>Submit</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </form>
+      </div>
+    </div>
+  </div>

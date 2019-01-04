@@ -1,0 +1,82 @@
+{
+    "requestType": {
+        "policyType": "Type de politique",
+        "newPolicy": "Nouvelle politique",
+        "renewal": "Renouvellement",
+        "quote": "Citation",
+        "claim": "Prétendre",
+        "claimDate": "Date de réclamation",
+        "policyNumber": "Numéro de police",
+        "claimDetails": "Détails de la réclamation"
+    },
+    "helpText": {
+        "example": "Exemple:",
+        "note": "Remarque:"
+    },
+    "queryInformation": {
+        "queryInfo": "Fournir des informations supplémentaires"
+    },
+    "buttons":{
+        "uploadDoc":"Télécharger un document",
+        "cancel":"Annuler",
+        "reset":"Réinitialiser",
+        "submit":"Soumettre"
+    },
+    "controlledGoods": {
+        "title": "Formulaire de sanctions pour le mouvement des marchandises contrôlées",
+        "qOne": {
+            "text": "Quels sont les biens militaires, contrôlés ou à double usage?",
+            "help": "Veuillez indiquer ici le nom de toutes les marchandises, par exemple, munitions, missile guidé, fusil d'assaut, cartes de circuit imprimé, logiciel de système de guidage, pneus de rechange pour véhicules militaires",
+            "error": "Détails de la marchandise requis",
+            "placeholder": "Détails des marchandises"
+        },
+        "qTwo": {
+            "text": "De quel pays proviennent les marchandises?",
+            "help": "",
+            "error": "Pays d'origine requis",
+            "placeholder": "Source de marchandises",
+            "twoSubOne": {
+                "text": "Dans quel pays vont les marchandises?",
+                "help": "",
+                "error": "Pays de destination requis",
+                "placeholder": "Destination des marchandises"
+            },
+            "twoSubTwo": {
+                "text": "Les marchandises passent-elles par un autre pays?",
+                "help": "",
+                "error": "Marchandises via les détails requis",
+                "placeholder": "Par pays"
+            }
+        },
+        "qThree": {
+            "text": "Quels sont les noms du client et des autres parties impliquées dans la transaction?",
+            "help": "",
+            "error": "",
+            "placeholder": "",
+            "threeSubOne": {
+                "text": "Le client / (ré) assuré:",
+                "help": "",
+                "error": "",
+                "placeholder": ""
+            },
+            "threeSubTwo": {
+                "text": "Autres tiers impliqués dans la transaction.",
+                "help": "",
+                "error": "",
+                "placeholder": ""
+            }
+        },
+        "qFour": {
+            "text": "Quel est le nom du destinataire des marchandises?",
+            "help": "",
+            "error": "Les destinataires des marchandises sont requis",
+            "placeholder": "Destinataires de marchandises"
+        },
+        "qFive": {
+            "text": "Utilisez cette case pour fournir toute information utile pouvant aider l'équipe des sanctions à évaluer votre requête.",
+            "help": "",
+            "error": "",
+            "placeholder": ""
+        }
+    }
+}

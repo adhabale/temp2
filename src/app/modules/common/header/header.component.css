@@ -1,0 +1,19 @@
+.nav-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 16px;
+}
+.flex-spacer{
+    flex-grow: 1;
+}
+button:focus{
+    outline: none !important;
+}
+.mat-button .mat-button-wrapper{
+    vertical-align: middle;
+}
+.anchor{
+    cursor: pointer!important;
+    color: #5FB8F2 !important ;
+}
